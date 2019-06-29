@@ -29,6 +29,10 @@ def main(url, out):
     for comment in comments:
         comment.extract()
 
+    for x in soup.find_all():
+        if len(x.get_text(strip=True)) == 0:
+            x.extract()
+
     with open(out, 'w') as output_file:
         output_file.write(soup.prettify())
 
